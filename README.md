@@ -3,10 +3,8 @@
 # Super Clock (C++ - SDL2)
 A Binary Clock with 3 Layouts, 2 Themes, Color or Black & White and 2 sizes. The Clock displays the Hours, Minutes, and Seconds each as 8 bits.
 
-# Run
-You will need to make sure SDL2 SDL2_image and SDL2_ttf is installed.
-
 # ArchLinux instructions.
+You will need to make sure SDL2 SDL2_image and SDL2_ttf is installed.
 ```
 sudo pacman -S --needed base-devel sdl2 sdl2_image sdl2_ttf
 cd
