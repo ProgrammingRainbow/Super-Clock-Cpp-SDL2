@@ -14,7 +14,9 @@ CFLAGS_RELEASE	= -O3 -march=native -flto=auto -fno-plt -fomit-frame-pointer
 CFLAGS_DEBUG 	= -O0 -g3 -ggdb3 -fno-strict-aliasing -fstack-protector-strong \
 				  -DDEBUG -fno-omit-frame-pointer
 
-LDLIBS_BASE		= -lstdc++ -flto
+LDLIBS_BASE		= -lstdc++
+
+LDLIBS_RELEASE	= -flto
 
 LDLIBS_DEBUG	=
 
@@ -61,7 +63,7 @@ $(TARGET): $(OBJS)
 all: $(TARGET)
 
 release: CFLAGS = $(CFLAGS_BASE) $(CFLAGS_RELEASE)
-release: LDLIBS = $(LDLIBS_BASE)
+release: LDLIBS = $(LDLIBS_BASE) $(LDLIBS_RELEASE)
 release: all
 
 clean:
