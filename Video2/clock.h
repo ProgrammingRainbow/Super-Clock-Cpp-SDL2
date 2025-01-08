@@ -9,8 +9,8 @@ struct Digit {
 
 class Clock {
     public:
-        Clock(std::shared_ptr<SDL_Renderer> renderer)
-            : renderer{renderer},
+        Clock(std::shared_ptr<SDL_Renderer> ren)
+            : renderer{ren},
               target_surf{nullptr, SDL_FreeSurface},
               images{},
               digits{} {}

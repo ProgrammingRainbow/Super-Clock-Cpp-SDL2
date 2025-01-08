@@ -10,10 +10,10 @@ struct Digit {
 
 class Clock {
     public:
-        Clock(std::shared_ptr<SDL_Window> window,
-              std::shared_ptr<SDL_Renderer> renderer)
-            : window{window},
-              renderer{renderer},
+        Clock(std::shared_ptr<SDL_Window> win,
+              std::shared_ptr<SDL_Renderer> ren)
+            : window{win},
+              renderer{ren},
               target_surf{nullptr, SDL_FreeSurface},
               text_surf{nullptr, SDL_FreeSurface},
               font{nullptr, TTF_CloseFont},
