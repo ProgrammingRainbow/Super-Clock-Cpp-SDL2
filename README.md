@@ -12,6 +12,13 @@ git clone https://github.com/ProgrammingRainbow/Super-Clock-Cpp-SDL2
 cd Super-Clock-Cpp-SDL2
 make run
 ```
+The Makefile builds debug by default. It also supports these commands:
+```
+make rebuild
+make clean
+make release
+SRC_DIR=Video8 make rebuild run
+```
 # Controls
 L/S - Change Layout/Style. \
 C - Toggles Color mode. \
