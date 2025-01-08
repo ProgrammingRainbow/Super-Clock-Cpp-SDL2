@@ -1,4 +1,4 @@
-TARGET			= .build/super-clock
+TARGET			= super-clock
 BUILD_DIR		= .build
 SRC_DIR			?= src
 CXX				?= g++
@@ -14,7 +14,7 @@ CFLAGS_RELEASE	= -O3 -march=native -flto=auto -fno-plt -fomit-frame-pointer
 CFLAGS_DEBUG 	= -O0 -g3 -ggdb3 -fno-strict-aliasing -fstack-protector-strong \
 				  -DDEBUG -fno-omit-frame-pointer
 
-LDLIBS_BASE		= -lstdc++
+LDLIBS_BASE		=
 
 LDLIBS_RELEASE	= -flto
 

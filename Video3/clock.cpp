@@ -7,13 +7,15 @@ void Clock::init() {
     digit.rect = SDL_Rect{0, 0, DIGIT_SIZE, DIGIT_SIZE};
 
     for (int _ : std::views::iota(0, DIGITS_LENGTH)) {
+        (void)_;
         this->digits.push_back(digit);
     }
 
     this->update_layout();
 
     this->images.clear();
-    for (int i = 0; i < 2; ++i) {
+    for (int _ : std::views::iota(0, 2)) {
+        (void)_;
         auto texture =
             std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)>(
                 nullptr, SDL_DestroyTexture);
