@@ -106,11 +106,11 @@ void Clock::update() {
 
     std::tm bt = *std::localtime(&in_time_t);
 
-    std::bitset<8> hours_binary(bt.tm_hour);
-    std::bitset<8> minutes_binary(bt.tm_min);
-    std::bitset<8> seconds_binary(bt.tm_sec);
+    std::bitset<8> hours_binary(static_cast<unsigned long>(bt.tm_hour));
+    std::bitset<8> minutes_binary(static_cast<unsigned long>(bt.tm_min));
+    std::bitset<8> seconds_binary(static_cast<unsigned long>(bt.tm_sec));
 
-    for (int i : std::views::iota(0, 8)) {
+    for (std::size_t i = 0; i < 8; i++) {
         this->digits[i].digit = hours_binary[7 - i];
         this->digits[i + 8].digit = minutes_binary[7 - i];
         this->digits[i + 16].digit = seconds_binary[7 - i];
@@ -118,7 +118,7 @@ void Clock::update() {
 }
 
 void Clock::draw() const {
-    for (int i : std::views::iota(0, DIGITS_LENGTH)) {
+    for (std::size_t i = 0; i < DIGITS_LENGTH; i++) {
         SDL_RenderCopy(this->renderer.get(),
                        this->images[this->digits[i].digit].get(), nullptr,
                        &this->digits[i].rect);

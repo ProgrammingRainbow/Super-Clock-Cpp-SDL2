@@ -34,7 +34,7 @@ class Clock {
         void toggle_text() { this->enable_text = !this->enable_text; };
 
     private:
-        void generate_image(int image_index, SDL_Color front_color,
+        void generate_image(std::size_t image_index, SDL_Color front_color,
                             SDL_Color back_color, bool color, bool size,
                             bool text);
         void generate_images();

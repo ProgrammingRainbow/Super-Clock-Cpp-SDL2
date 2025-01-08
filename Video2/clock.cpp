@@ -101,7 +101,7 @@ void Clock::generate_images() {
 }
 
 void Clock::draw() const {
-    for (int i : std::views::iota(0, DIGITS_LENGTH)) {
+    for (std::size_t i = 0; i < DIGITS_LENGTH; i++) {
         SDL_RenderCopy(this->renderer.get(), this->images[1].get(), nullptr,
                        &this->digits[i].rect);
     }

@@ -1,4 +1,5 @@
 #include "clock.h"
+#include "main.h"
 
 void Clock::init() {
     this->digits.clear();
@@ -51,7 +52,7 @@ void Clock::update_layout() {
     }
 }
 
-void Clock::generate_image(int image_index, SDL_Color front_color,
+void Clock::generate_image(std::size_t image_index, SDL_Color front_color,
                            SDL_Color back_color, bool color) {
 
     this->target_surf.reset(
@@ -103,7 +104,7 @@ void Clock::generate_images() {
         {223, 223, 223, 255}, {31, 31, 31, 255},
     };
 
-    for (int i : std::views::iota(0, 8)) {
+    for (std::size_t i = 0; i < 8; i++) {
         this->generate_image(i, colors[9], colors[10], false);
 
         this->generate_image(i, colors[i % 8], colors[8], true);
@@ -116,11 +117,11 @@ void Clock::update() {
 
     std::tm bt = *std::localtime(&in_time_t);
 
-    std::bitset<8> hours_binary(bt.tm_hour);
-    std::bitset<8> minutes_binary(bt.tm_min);
-    std::bitset<8> seconds_binary(bt.tm_sec);
+    std::bitset<8> hours_binary(static_cast<unsigned long>(bt.tm_hour));
+    std::bitset<8> minutes_binary(static_cast<unsigned long>(bt.tm_min));
+    std::bitset<8> seconds_binary(static_cast<unsigned long>(bt.tm_sec));
 
-    for (int i : std::views::iota(0, 8)) {
+    for (std::size_t i = 0; i < 8; i++) {
         this->digits[i].digit = hours_binary[7 - i];
         this->digits[i + 8].digit = minutes_binary[7 - i];
         this->digits[i + 16].digit = seconds_binary[7 - i];
@@ -128,7 +129,7 @@ void Clock::update() {
 }
 
 void Clock::draw() const {
-    for (int i : std::views::iota(0, DIGITS_LENGTH)) {
+    for (std::size_t i = 0; i < DIGITS_LENGTH; i++) {
         SDL_RenderCopy(
             this->renderer.get(),
             this->images[this->digits[i].digit][i % 8][this->enable_color]

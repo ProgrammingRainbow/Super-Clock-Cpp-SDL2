@@ -37,6 +37,7 @@ void Game::events() {
             default:
                 break;
             }
+            break;
         default:
             break;
         }

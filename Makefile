@@ -1,9 +1,9 @@
-TARGET			= super-clock
+TARGET			= .build/super-clock
 BUILD_DIR		= .build
 SRC_DIR			?= src
 CXX				?= g++
 
-CFLAGS_BASE		= -std=c++20 -Wstrict-aliasing=3 -Wall -Wextra -Werror \
+CFLAGS_BASE		= -std=c++20 -Wstrict-aliasing=2 -Wall -Wextra -Werror \
 				  -Wpedantic -Wwrite-strings -Wconversion -Wmissing-declarations \
 				  -Wmissing-include-dirs -Wfloat-equal -Wsign-compare -Wundef \
 				  -Wcast-align -Wswitch-default -Wimplicit-fallthrough \
@@ -14,7 +14,7 @@ CFLAGS_RELEASE	= -O3 -march=native -flto=auto -fno-plt -fomit-frame-pointer
 CFLAGS_DEBUG 	= -O0 -g3 -ggdb3 -fno-strict-aliasing -fstack-protector-strong \
 				  -DDEBUG -fno-omit-frame-pointer
 
-LDLIBS_BASE		= -lstdc++
+LDLIBS_BASE		= -lstdc++ -flto
 
 LDLIBS_DEBUG	=
 
