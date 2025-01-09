@@ -36,7 +36,7 @@ void Game::init_sdl() {
         SDL_SetWindowIcon(this->window.get(), icon_surf.get());
     } else {
         auto error =
-            std::format("Error creating icon Surface: {}", SDL_GetError());
+            std::format("Error creating icon Surface: {}", IMG_GetError());
         throw std::runtime_error(error);
     }
 }

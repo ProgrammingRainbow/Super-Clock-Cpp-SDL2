@@ -1,10 +1,5 @@
 #include "game.h"
 
-Game::Game()
-    : window{nullptr, SDL_DestroyWindow},
-      renderer{nullptr, SDL_DestroyRenderer},
-      is_running{true} {}
-
 Game::~Game() {
     this->renderer.reset();
     this->window.reset();
@@ -37,7 +32,7 @@ void Game::events() {
     }
 }
 
-void Game::draw() {
+void Game::draw() const {
     SDL_RenderClear(this->renderer.get());
 
     SDL_RenderPresent(this->renderer.get());

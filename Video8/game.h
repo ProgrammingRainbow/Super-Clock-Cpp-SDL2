@@ -5,7 +5,12 @@
 
 class Game {
     public:
-        Game();
+        Game()
+            : window{nullptr, SDL_DestroyWindow},
+              renderer{nullptr, SDL_DestroyRenderer},
+              clock{nullptr},
+              event{},
+              is_running{true} {}
         ~Game();
 
         void init_sdl();
@@ -15,12 +20,11 @@ class Game {
     private:
         void events();
         void update();
-        void draw();
-
-        std::unique_ptr<Clock> clock;
+        void draw() const;
 
         std::shared_ptr<SDL_Window> window;
         std::shared_ptr<SDL_Renderer> renderer;
+        std::unique_ptr<Clock> clock;
         SDL_Event event;
         bool is_running;
 };

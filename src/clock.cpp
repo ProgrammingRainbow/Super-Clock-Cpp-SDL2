@@ -1,5 +1,4 @@
 #include "clock.h"
-#include "main.h"
 
 void Clock::init() {
     this->digits.clear();

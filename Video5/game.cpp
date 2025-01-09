@@ -1,16 +1,12 @@
 #include "game.h"
 
-Game::Game()
-    : window{nullptr, SDL_DestroyWindow},
-      renderer{nullptr, SDL_DestroyRenderer},
-      is_running{true} {}
-
 Game::~Game() {
     this->clock.reset();
 
     this->renderer.reset();
     this->window.reset();
 
+    IMG_Quit();
     SDL_Quit();
 
     std::cout << "all clean!" << std::endl;
@@ -50,7 +46,7 @@ void Game::events() {
     }
 }
 
-void Game::draw() {
+void Game::draw() const {
     SDL_RenderClear(this->renderer.get());
 
     this->clock->draw();

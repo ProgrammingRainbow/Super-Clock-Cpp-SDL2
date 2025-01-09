@@ -5,7 +5,11 @@
 
 class Game {
     public:
-        Game();
+        Game()
+            : window{nullptr, SDL_DestroyWindow},
+              renderer{nullptr, SDL_DestroyRenderer},
+              event{},
+              is_running{true} {}
         ~Game();
 
         void init_sdl();
@@ -15,7 +19,7 @@ class Game {
     private:
         void events();
         void update();
-        void draw();
+        void draw() const;
 
         std::shared_ptr<SDL_Window> window;
         std::shared_ptr<SDL_Renderer> renderer;
